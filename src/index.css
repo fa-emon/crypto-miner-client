@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Font for headings */
+.heading-font {
+    font-family: 'Space Grotesk', sans-serif; 
+  }
+  
+  /* Font for other text */
+  .all-font {
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 700;
+  }

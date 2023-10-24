@@ -5,7 +5,7 @@ const Footer = () => {
 
     return (
         <div>
-            <footer className="footer p-10 bg-base-300 text-base-content">
+            <footer className="footer p-10 bg-base-300 text-base-content all-font">
                 <aside>
                     <img className='w-32 h-32' src={icon} alt="" />
                     <p>Crypto Miner<br />Unearth the Digital Gold.</p>
@@ -32,7 +32,7 @@ const Footer = () => {
                 </nav>
             </footer>
 
-            <footer className="footer footer-center p-4 bg-base-300 text-base-content">
+            <footer className="footer footer-center p-4 bg-base-300 text-base-content all-font">
                 <aside>
                     <p>Copyright © {currentYear} , Crypto Miner</p>
                 </aside>
