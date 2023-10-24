@@ -1,96 +1,36 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
+import { BsFacebook, BsGithub, BsGoogle } from 'react-icons/bs';
 
 
 const SocialLogin = () => {
-    const {signIn} = useContext(AuthContext);
-    const [disabled, setDisabled] = useState(true);
+    const {signInWithGoogle} = useContext(AuthContext);
 
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    const handleLogin = (event) => {
-        event.preventDefault();
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
-        form.reset();
-
-        signIn(email, password)
+    const handleWithGoogleSignIn = () => {
+        signInWithGoogle()
         .then((result) => {
             const user = result.user;
-            console.log(user);
-
-            Swal.fire({
-                title: 'User logged in successfully.',
-                showClass: {
-                  popup: 'animate__animated animate__fadeInDown'
-                },
-                hideClass: {
-                  popup: 'animate__animated animate__fadeOutUp'
-                }
-              })
+            console.log(user)
             navigate(from, { replace: true });
         })
         .catch((error) => {
-            console.error('error', error);
+            console.error('error', error)
         })
     }
 
-    const handleValidateCaptcha = (event) => {
-        const user_captcha_value = event.target.value;
-        if(validateCaptcha(user_captcha_value)==true){
-            setDisabled(false)
-        }
-        else{
-            setDisabled(true);
-        }
-    }
-
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-    }, [])
-
     return (
-        <div className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex">
-                <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Log in!</h1>
-                </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form onSubmit={handleLogin} className="card-body">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
-                        </div>
+        <div className='text-center'>
+            <div className='mt-2'>
+                <button className="btn btn-circle bg-slate-400 hover:bg-slate-900 text-white font-xl mr-2"><BsGoogle onClick={handleWithGoogleSignIn} className='text-base'></BsGoogle></button>
 
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Password</span>
-                            </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                        </div>
-
-                        <div className="form-control">
-                            <label className="label">
-                                <LoadCanvasTemplate />
-                            </label>
-                            <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" required />
-                        </div>
-
-                        <div className="form-control mt-6">
-                            <input disabled={disabled} className="btn btn-primary" type="submit" value="Log in" />
-                        </div>
-                        <p className='text-[#D1A054] font-medium text-xl text-center'><small>New Here? <Link to={'/register'}>Create an account.</Link></small></p>
-                        <SocialLogin></SocialLogin>
-                    </form>
-                </div>
+                {/* {These 2 are just demo} */}
+                <button className="btn btn-circle bg-slate-400 hover:bg-slate-900 text-white font-xl me-2"><BsFacebook className='text-base'></BsFacebook></button>
+                <button className="btn btn-circle bg-slate-400 hover:bg-slate-900 text-white font-xl"><BsGithub className='text-base'></BsGithub></button>
             </div>
         </div>
     );

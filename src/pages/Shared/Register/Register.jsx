@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 
 const Register = () => {
@@ -115,6 +116,7 @@ const Register = () => {
                             <input className="btn btn-primary" type="submit" value="Sign Up" />
                         </div>
                         <p className='text-[#D1A054] font-medium text-xl text-center'><small>Already have an account? <Link to={'/login'}>LOG IN</Link></small></p>
+                        <SocialLogin></SocialLogin>
                     </form>
                 </div>
             </div>

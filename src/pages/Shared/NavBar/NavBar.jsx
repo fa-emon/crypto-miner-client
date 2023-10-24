@@ -23,12 +23,11 @@ const NavBar = () => {
         {
             user ?
                 <>
-                    <li><Link to={'/mining'}>Mining</Link></li>
                     <li><button onClick={handleLogOut} className="btn btn-ghost btn-sm">LogOut</button></li>
                 </> :
                 <>
-                    <li><Link to={'/login'}>Login</Link></li>
-                    <li><Link to={'/register'}>Register</Link></li>
+                    <li><Link to={'/login'}>Log In</Link></li>
+                    <li><Link to={'/register'}>Sign Up</Link></li>
                 </>
         }
     </>
