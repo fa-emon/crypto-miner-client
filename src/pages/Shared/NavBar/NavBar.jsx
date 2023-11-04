@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
+import { BiSolidUserCircle } from 'react-icons/bi';
 
 
 const NavBar = () => {
@@ -33,7 +34,7 @@ const NavBar = () => {
     </>
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar rounded bg-gradient-to-r from-violet-300 to-fuchsia-500">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -51,15 +52,25 @@ const NavBar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                {isUserLoggedIn &&
-                    <img
-                        src="/path/to/user-profile-image.jpg" // Replace with the actual image path
-                        alt="User Profile"
-                        className="w-10 h-10 rounded-full mr-2"
-                    />
+                {
+                    isUserLoggedIn ?
+                        <>
+                            <div className="tooltip tooltip-left" data-tip={user?.displayName}>
+                                <img
+                                    src={user?.photoURL}
+                                    alt="User Profile"
+                                    className="w-10 h-10 rounded-full mr-2"
+                                />
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div className="tooltip tooltip-left" data-tip={'No User Found'}>
+                                <BiSolidUserCircle className="w-10 h-10 rounded-full mr-2 bg-slate-200"></BiSolidUserCircle>
+                            </div>
+                        </>
                 }
             </div>
-
         </div>
 
     );

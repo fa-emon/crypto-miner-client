@@ -23,12 +23,8 @@ export const router = createBrowserRouter([
             element: <Register></Register>
         },
         {
-            path: '/errorPage',
-            element: <ErrorPage></ErrorPage>
-        },
-        {
             path: '*',
-            element: <h2>Sorry..Not Found</h2>
+            element: <ErrorPage></ErrorPage>
         }
       ]
     },

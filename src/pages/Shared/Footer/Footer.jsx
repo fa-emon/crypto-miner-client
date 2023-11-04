@@ -4,8 +4,8 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
-        <div>
-            <footer className="footer p-10 bg-base-300 text-base-content all-font">
+        <div className='rounded bg-gradient-to-r from-violet-300 to-fuchsia-500 '>
+            <footer className="footer p-10 text-base-content all-font mt-6">
                 <aside>
                     <img className='w-32 h-32' src={icon} alt="" />
                     <p>Crypto Miner<br />Unearth the Digital Gold.</p>
@@ -32,7 +32,7 @@ const Footer = () => {
                 </nav>
             </footer>
 
-            <footer className="footer footer-center p-4 bg-base-300 text-base-content all-font">
+            <footer className="footer footer-center p-4 text-base-content all-font">
                 <aside>
                     <p>Copyright © {currentYear} , Crypto Miner</p>
                 </aside>

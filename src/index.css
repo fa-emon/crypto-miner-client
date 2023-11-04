@@ -5,6 +5,7 @@
 /* Font for headings */
 .heading-font {
     font-family: 'Space Grotesk', sans-serif; 
+    font-weight: 500;
   }
   
   /* Font for other text */
